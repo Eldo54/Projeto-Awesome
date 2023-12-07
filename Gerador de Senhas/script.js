@@ -20,12 +20,11 @@ const generatePassword = () => {
     passLength = lengthSlider.value;
 
   options.forEach((option) => {
-    // looping through each option's checkbox
+
     if (option.checked) {
-      // if checkbox is checked
-      // if checkbox id isn't exc-duplicate && spaces
+
       if (option.id !== "exc-duplicate" && option.id !== "spaces") {
-        // adding particular key value from character object to staticPassword
+
         staticPassword += characters[option.id];
       } else if (option.id === "spaces") {
         // if checkbox id is spaces
@@ -42,9 +41,6 @@ const generatePassword = () => {
     let randomChar =
       staticPassword[Math.floor(Math.random() * staticPassword.length)];
     if (excludeDuplicate) {
-      // if excludeDuplicate is true
-      // if randomPassword doesn't contains the current random character or randomChar is equal
-      // to space " " then add random character to randomPassword else decrement i by -1
       !randomPassword.includes(randomChar) || randomChar == " "
         ? (randomPassword += randomChar)
         : i--;
@@ -53,12 +49,10 @@ const generatePassword = () => {
       randomPassword += randomChar;
     }
   }
-  passwordInput.value = randomPassword; // passing randomPassword to passwordInput value
+  passwordInput.value = randomPassword; 
 };
 
 const upadatePassIndicator = () => {
-  // if lengthSlider value is less than 8 then pass "weak" as passIndicator id else if lengthSlider
-  // value is less than 16 then pass "medium" as id else pass "strong" as id
   passIndicator.id =
     lengthSlider.value <= 8
       ? "weak"
